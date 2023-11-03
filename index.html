@@ -82,56 +82,77 @@
             text-align: center;
             padding: 2rem;
         }
-              .dropdown {
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .dropdown {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            display: none;
+            top: 0;
+            left: 0;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 5px;
-            animation: fade-in 0.5s;
             z-index: 1;
+            flex-direction: column;
+            align-items: flex-start; /* Adjusted alignment */
+            height: 100%;
+            display: flex;
+            width: 50px;
+            overflow: hidden;
+            transition: width 0.5s;
+        }
+
+        .dropdown.open {
+            width: 200px;
+        }
+
+        .dropdown-icon {
+            color: #fff;
+            cursor: pointer;
+            font-size: 24px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
         }
 
         .dropdown-content {
-            display: flex;
+            flex: 1;
             flex-direction: column;
             gap: 10px;
             padding: 10px;
+            display: none;
+            align-items: flex-start; /* Adjusted alignment */
+        }
+
+        .dropdown.open .dropdown-content {
+            display: flex;
         }
 
         .dropdown-content a {
             color: #fff;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 20px; /* Adjusted font size */
+            cursor: pointer;
         }
 
         .dropdown-content a:hover {
             color: #4CAF50;
         }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <div class="dropdown">
-        <div class="dropdown-icon">&#9776;</div>
+    <div class="dropdown" id="dropdown">
+        <div class="dropdown-icon" onclick="toggleDropdown()">&#9776;</div>
         <div class="dropdown-content">
-            <a onclick="navigateTo('https://femboys.aziaclient.xyz/features')">Features</a>
-            <a onclick="navigateTo('https://femboys.aziaclient.xyz/status')">Status</a>
+            <a onclick="navigateTo('https://femboys.aziaclient.xyz/features.html')">Features</a>
+            <a onclick="navigateTo('https://femboys.aziaclient.xyz/status.html')">Status</a>
             <a onclick="navigateTo('https://femboys.aziaclient.xyz')">Home</a>
         </div>
     </div>
@@ -155,7 +176,12 @@
             Site Made By Beta (betalolz)
         </div>
     </div>
-        <script>
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.classList.toggle('open');
+        }
+
         function navigateTo(url) {
             window.location.href = url;
         }
