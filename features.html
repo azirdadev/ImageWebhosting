@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolarUI | Gorilla Tag Mod Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .customer-service {
+            background-color: #222;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .customer-service h2 {
+            color: #fff;
+        }
+
+        .customer-service img {
+            max-width: 100%;
+            margin-top: 1rem;
+        }
+
+        .menu-options {
+            text-align: center;
+            padding: 1rem;
+        }
+        .Made-By {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        .discord-invite {
+            margin-top: 1rem;
+        }
+        #gui-image {
+    width: 400px;
+    height: auto;
+}
+        .button-container {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #FF0000; /* Red color */
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .Made-By {
+            text-align: center;
+            padding: 2rem;
+        }
+        body, html {
+            height: 90%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            z-index: 1;
+            flex-direction: column;
+            align-items: flex-start; /* Adjusted alignment */
+            height: 138%;
+            display: flex;
+            width: 50px;
+            overflow: hidden;
+            transition: width 0.5s;
+        }
+
+        .dropdown.open {
+            width: 200px;
+        }
+
+        .dropdown-icon {
+            color: #fff;
+            cursor: pointer;
+            font-size: 24px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .dropdown-content {
+            flex: 1;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            display: none;
+            align-items: flex-start; /* Adjusted alignment */
+        }
+
+        .dropdown.open .dropdown-content {
+            display: flex;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px; /* Adjusted font size */
+            cursor: pointer;
+        }
+
+        .dropdown-content a:hover {
+            color: #4CAF50;
+        }
+        .feature-section {
+            margin: 20px;
+      text-align: center;
+        }
+
+        .feature-section h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .feature-section p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+  
+    <div class="header">
+        <h1>SolarUI: Features</h1>
+    </div>
+  
+    <div class="feature-section">
+        <h2>Room:</h2>
+        <p>Join Room</p>
+        <p>Join Pub</p>
+        <p>Disconnect</p>
+        <p>Quit</p>
+        <p>Get Room IDs</p>
+    </div>
+
+    <div class="feature-section">
+        <h2>Fun:</h2>
+        <p>Place the camera on a bug for unique perspectives.</p>
+        <p>Place the camera on a bat for a different viewpoint.</p>
+        <p>Attempt to fix the camera</p>
+        <p>Attempt to fix camera for Bat/Bug Camera Mods</p>
+    </div>
+
+    <div class="feature-section">
+        <h2>Miscellaneous:</h2>
+        <p>Move all holdable items to the chest slot</p>
+        <p>Enable low gravity for all players</p>
+    </div>
+    <div class="dropdown" id="dropdown">
+        <div class="dropdown-icon" onclick="toggleDropdown()">&#9776;</div>
+        <div class="dropdown-content">
+            <a onclick="navigateTo('https://femboys.aziaclient.xyz/features.html')">Features</a>
+            <a onclick="navigateTo('https://femboys.aziaclient.xyz/status.html')">Status</a>
+            <a onclick="navigateTo('https://femboys.aziaclient.xyz')">Home</a>
+        </div>
+    </div>
+
+    <div class="Made-By">
+        <div class="text-lol">
+            Site Made By Beta (betalolz)
+        </div>
+    </div>
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.classList.toggle('open');
+        }
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+    
+        <script>
+        function openDiscord() {
+            window.open("https://discord.gg/aPM6cK6AEF", "_blank");
+        }
+    </script>
+
+</body>
+
+</html>
