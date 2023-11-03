@@ -62,9 +62,28 @@
     width: 300px;
     height: auto;
 }
+      .button-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.button {
+    display: inline-block;
+    background-color: #FF0000; /* Red color */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    border: none;
+    cursor: pointer;
+}
+
 
     </style>
 </head>
+
+<body>
 
 <body>
 
@@ -72,24 +91,28 @@
         <h1>Welcome SolarUI's Website!</h1>
     </div>
 
-<div class="customer-service">
-    <h2>SolarUI | The Best Gorilla Tag GUI</h2>
-    <p>We have the best Gorilla Tag UI, no cap lmao!!!!!</p>
-    <img src="img.png" alt="GUI Image" id="gui-image">
-</div>
+    <div class="customer-service">
+        <h2>SolarUI | The Best Gorilla Tag GUI</h2>
+        <p>We have the best Gorilla Tag UI, no cap lmao!!!!!</p>
+        <img src="img.png" alt="GUI Image" id="gui-image">
+    </div>
 
+    <div class="button-container">
+        <button class="button" onclick="openDiscord()">Join Discord</button>
+    </div>
 
-
-    <div class="menu-options">
-        <div class="discord-invite">
-            Join Discord: <a href="https://discord.gg/aPM6cK6AEF" target="_blank">Discord Invite</a>
-        </div>
     </div>
     <div class="Made-By">
         <div class="text-lol">
             Site Made By Beta (betalolz)
         </div>
     </div>
+
+    <script>
+        function openDiscord() {
+            window.open("https://discord.gg/aPM6cK6AEF", "_blank");
+        }
+    </script>
 
 </body>
 
