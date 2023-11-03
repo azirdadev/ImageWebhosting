@@ -159,25 +159,29 @@
             line-height: 1.6;
             margin-bottom: 20px;
         }
-        .fade-out {
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
         }
 
-        .fade-in {
-            opacity: 1;
-            transition: opacity 0.5s ease-in-out;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 
 <body>
   
-    <div class="header">
+    <div class="header fade-in">
         <h1>SolarUI | Features</h1>
     </div>
   
-    <div class="feature-section">
+    <div class="feature-section fade-in">
         <h2>Room:</h2>
         <p>Join Room</p>
         <p>Join Pub</p>
@@ -186,7 +190,7 @@
         <p>Get Room IDs</p>
     </div>
 
-    <div class="feature-section">
+    <div class="feature-section fade-in">
         <h2>Fun:</h2>
         <p>Place the camera on a bug for unique perspectives.</p>
         <p>Place the camera on a bat for a different viewpoint.</p>
@@ -194,12 +198,12 @@
         <p>Attempt to fix camera for Bat/Bug Camera Mods</p>
     </div>
 
-    <div class="feature-section">
+    <div class="feature-section fade-in">
         <h2>Miscellaneous:</h2>
         <p>Move all holdable items to the chest slot</p>
         <p>Enable low gravity for all players</p>
     </div>
-    <div class="dropdown" id="dropdown">
+    <div class="dropdown fade-in" id="dropdown">
         <div class="dropdown-icon" onclick="toggleDropdown()">&#9776;</div>
         <div class="dropdown-content">
             <a onclick="navigateTo('https://femboys.aziaclient.xyz')">Home</a>
@@ -208,26 +212,11 @@
         </div>
     </div>
 
-    <div class="Made-By">
+    <div class="Made-By fade-in">
         <div class="text-lol">
             Site Made By Beta (betalolz)
         </div>
     </div>
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const elementsToFade = document.querySelectorAll('.fade-out, .fade-in');
-
-            function handlePageChange() {
-                elementsToFade.forEach(element => {
-                    element.classList.toggle('fade-out');
-                    element.classList.toggle('fade-in');
-                });
-            }
-
-            window.addEventListener('popstate', handlePageChange);
-            handlePageChange(); // Initial call to handle current URL
-        });
-    </script>
     <script>
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdown');
@@ -244,6 +233,35 @@
             window.open("https://discord.gg/aPM6cK6AEF", "_blank");
         }
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fadeIns = document.querySelectorAll('.fade-in');
+
+        function fadeIn() {
+            fadeIns.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+
+                if (elementTop < window.innerHeight && elementBottom >= 0) {
+                    element.style.opacity = 1;
+                }
+            });
+        }
+
+        window.addEventListener('scroll', fadeIn);
+        fadeIn(); // Trigger initial fade in
+
+        const lastUpdatedElement = document.getElementById('last-updated');
+
+        function updateLastUpdated() {
+            const currentDate = new Date();
+            const formattedDate = `${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')} ${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+            lastUpdatedElement.textContent = `Last Updated: ${formattedDate}`;
+        }
+
+        updateLastUpdated();
+    });
+</script>
 
 </body>
 
