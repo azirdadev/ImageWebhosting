@@ -144,12 +144,25 @@
         .dropdown-content a:hover {
             color: #4CAF50;
         }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="dropdown" id="dropdown">
-        <div class="dropdown-icon" onclick="toggleDropdown()">&#9776;</div>
+    <div class="dropdown fade-in" id="dropdown">
+                <div class="dropdown-icon" onclick="toggleDropdown()">&#9776;</div>
         <div class="dropdown-content">
             <a onclick="navigateTo('https://femboys.aziaclient.xyz')">Home</a>
             <a onclick="navigateTo('https://femboys.aziaclient.xyz/features.html')">Features</a>
@@ -157,24 +170,25 @@
         </div>
     </div>
 
-    <div class="header">
+    <div class="header fade-in">
         <h1>SolarUI | Home Page</h1>
     </div>
 
-    <div class="customer-service">
+    <div class="customer-service fade-in">
         <h2>SolarUI | The Best Gorilla Tag GUI</h2>
         <p>We have the best Gorilla Tag UI, no cap lmao!!!!!</p>
         <img src="https://femboys.aziaclient.xyz/img.png" alt="GUI Image" id="gui-image">
     </div>
 
-    <div class="button-container">
-        <button class="button" onclick="openDiscord()">Join Discord</button>
+    <div class="button-container fade-in">
+                <button class="button" onclick="openDiscord()">Join Discord</button>
     </div>
 
-    <div class="Made-By">
-        <div class="text-lol">
+    <div class="Made-By fade-in">
+                <div class="text-lol">
             Site Made By Beta (betalolz)
         </div>
+    </div>
     </div>
     <script>
         function toggleDropdown() {
@@ -187,10 +201,33 @@
         }
     </script>
     
-        <script>
+    <script>
         function openDiscord() {
             window.open("https://discord.gg/aPM6cK6AEF", "_blank");
         }
+    </script>
+
+    <script>
+        // Apply fade-in animation to elements with class "fade-in"
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeIns = document.querySelectorAll('.fade-in');
+            fadeIns.forEach(element => {
+                element.style.opacity = 0;
+                window.addEventListener('scroll', fadeIn);
+            });
+
+            function fadeIn() {
+                fadeIns.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+
+                    if (elementTop < window.innerHeight && elementBottom >= 0) {
+                        element.style.opacity = 1;
+                        window.removeEventListener('scroll', fadeIn);
+                    }
+                });
+            }
+        });
     </script>
 
 </body>
