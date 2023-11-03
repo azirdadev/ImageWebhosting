@@ -168,16 +168,29 @@
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
         }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
 <body>
   
-    <div class="header">
+    <div class="header fade-in">
         <h1>SolarUI | Products</h1>
     </div>
   
-    <div class="feature-section">
+    <div class="feature-section fade-in">
         <h2>SolarUI, and SolarMenu (WIP)</h2>
     <div class="dropdown" id="dropdown">
         <div class="dropdown-icon" onclick="toggleDropdown()">&#9776;</div>
@@ -188,27 +201,12 @@
         </div>
     </div>
 
-    <div class="Made-By">
+    <div class="Made-By fade-in">
         <div class="text-lol">
             Site Made By Beta (betalolz)
         </div>
     </div>
-            <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const elementsToFade = document.querySelectorAll('.fade-out, .fade-in');
-
-            function handlePageChange() {
-                elementsToFade.forEach(element => {
-                    element.classList.toggle('fade-out');
-                    element.classList.toggle('fade-in');
-                });
-            }
-
-            window.addEventListener('popstate', handlePageChange);
-            handlePageChange(); // Initial call to handle current URL
-        });
-    </script>
-    <script>
+        <script>
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdown');
             dropdown.classList.toggle('open');
@@ -219,10 +217,33 @@
         }
     </script>
     
-        <script>
+    <script>
         function openDiscord() {
             window.open("https://discord.gg/aPM6cK6AEF", "_blank");
         }
+    </script>
+
+    <script>
+        // Apply fade-in animation to elements with class "fade-in"
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeIns = document.querySelectorAll('.fade-in');
+            fadeIns.forEach(element => {
+                element.style.opacity = 0;
+                window.addEventListener('scroll', fadeIn);
+            });
+
+            function fadeIn() {
+                fadeIns.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+
+                    if (elementTop < window.innerHeight && elementBottom >= 0) {
+                        element.style.opacity = 1;
+                        window.removeEventListener('scroll', fadeIn);
+                    }
+                });
+            }
+        });
     </script>
 
 </body>
