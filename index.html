@@ -144,6 +144,15 @@
         .dropdown-content a:hover {
             color: #4CAF50;
         }
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fade-in {
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
     </style>
 </head>
 
@@ -176,6 +185,21 @@
             Site Made By Beta (betalolz)
         </div>
     </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elementsToFade = document.querySelectorAll('.fade-out, .fade-in');
+
+            function handlePageChange() {
+                elementsToFade.forEach(element => {
+                    element.classList.toggle('fade-out');
+                    element.classList.toggle('fade-in');
+                });
+            }
+
+            window.addEventListener('popstate', handlePageChange);
+            handlePageChange(); // Initial call to handle current URL
+        });
+    </script>
     <script>
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdown');
