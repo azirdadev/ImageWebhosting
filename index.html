@@ -144,13 +144,6 @@
         .dropdown-content a:hover {
             color: #4CAF50;
         }
-        #last-updated {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            color: #fff;
-            font-size: 14px;
-        }
     </style>
 </head>
 
@@ -183,21 +176,6 @@
             Site Made By Beta (betalolz)
         </div>
     </div>
-    <div id="last-updated"></div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const lastUpdatedElement = document.getElementById('last-updated');
-
-            function updateLastUpdated() {
-                const currentDate = new Date();
-                const formattedDate = `${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')} ${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
-                lastUpdatedElement.textContent = `Last Updated: ${formattedDate}`;
-            }
-
-            updateLastUpdated();
-        });
-    </script>
     <script>
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdown');
