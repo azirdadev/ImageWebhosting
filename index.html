@@ -207,28 +207,35 @@
         }
     </script>
 
-    <script>
-        // Apply fade-in animation to elements with class "fade-in"
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeIns = document.querySelectorAll('.fade-in');
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fadeIns = document.querySelectorAll('.fade-in');
+
+        function fadeIn() {
             fadeIns.forEach(element => {
-                element.style.opacity = 0;
-                window.addEventListener('scroll', fadeIn);
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+
+                if (elementTop < window.innerHeight && elementBottom >= 0) {
+                    element.style.opacity = 1;
+                }
             });
+        }
 
-            function fadeIn() {
-                fadeIns.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementBottom = element.getBoundingClientRect().bottom;
+        window.addEventListener('scroll', fadeIn);
+        fadeIn(); // Trigger initial fade in
 
-                    if (elementTop < window.innerHeight && elementBottom >= 0) {
-                        element.style.opacity = 1;
-                        window.removeEventListener('scroll', fadeIn);
-                    }
-                });
-            }
-        });
-    </script>
+        const lastUpdatedElement = document.getElementById('last-updated');
+
+        function updateLastUpdated() {
+            const currentDate = new Date();
+            const formattedDate = `${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')} ${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+            lastUpdatedElement.textContent = `Last Updated: ${formattedDate}`;
+        }
+
+        updateLastUpdated();
+    });
+</script>
 
 </body>
 
