@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Your Bio.</title>
+    <style>
+        body {
+            background-color: black;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: fit-content;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out forwards;
+            transition: width 1s ease-in-out;
+            text-align: center;
+            background-color: black;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #61dafb;
+        }
+
+        button {
+            background-color: #3f7fbf;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .text-editor {
+            width: 100%;
+            min-height: 200px;
+            border: 1px solid #3f7fbf;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            color: #fff;
+            background-color: #111;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        p {
+            text-align: center;
+            animation: fadeInUp 1s ease-in-out forwards;
+            color: #fff;
+            opacity: 1;
+        }
+
+        img {
+            width: 100px; /* Set your desired width for the profile picture */
+            height: 100px; /* Set your desired height for the profile picture */
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Upload Your Bio.</h1>
+
+        <!-- Input for Name -->
+        <input type="text" id="nameInput" placeholder="Enter Your Name">
+
+        <!-- Input for Profile Picture -->
+        <input type="file" id="profilePictureInput" accept="image/png" onchange="previewProfilePicture(event)">
+
+        <!-- Profile Picture Preview -->
+        <img id="profilePicturePreview" alt="Profile Picture" style="display: none;">
+
+        <h2>Type Your Text:</h2>
+        <div class="text-editor" contenteditable="true" id="textEditor"></div>
+
+        <h2>Background Image URL:</h2>
+        <input type="text" id="backgroundImageUrlInput" placeholder="Enter Background Image URL">
+
+
+        <button onclick="applyBold()">Bold</button>
+        <button onclick="applyItalic()">Italic</button>
+
+        <button onclick="uploadText()">Upload</button>
+
+        <div id="upload-link"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.container').style.opacity = 1;
+        });
+
+        function applyBold() {
+            document.execCommand('bold', false, null);
+        }
+
+        function applyItalic() {
+            document.execCommand('italic', false, null);
+        }
+
+        function previewProfilePicture(event) {
+            const preview = document.getElementById('profilePicturePreview');
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }        function uploadText() {
+            const name = document.getElementById('nameInput').value;
+            const textContent = document.getElementById('textEditor').innerText;
+            const profilePicture = document.getElementById('profilePicturePreview').src;                
+            const backgroundImageUrl = document.getElementById('backgroundImageUrlInput').value;
+
+                if (textContent) {
+                    const generatedHtml = `
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>${name} · feds.lol</title>
+    <meta property="og:title" content="${name} · feds.lol">
+    <meta name="description" content="${textContent}">
+    <meta property="og:description" content="${textContent}">
+    <meta name="twitter:card" content="summary">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#2F3136">
+    <link href="${profilePicture}" rel="shortcut icon" type="image/x-icon">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://feds.lol/module/newww/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="assets/vendors/animation/animate.css" rel="stylesheet">
+</head>
+
+<body class="fedslol">
+    <main style="background-image:linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)),url('black-background.jpg'); background-position: center;background-repeat: no-repeat;background-size: cover;background-attachment: fixed; background-position: center;">
+        <div class="fixed w-full h-full"></div>
+        <div class="biolink" style="height:100%;width:100%;">
+            <div class="relative w-full h-full px-4 py-16 table">
+                <div class="table-cell align-middle text-center">
+                    <div class="bg-main rounded-md shadow-4xl w-full mx-auto card animate-slide-up not-last-child:mb-12 max-w-[1100px] mt-14">
+                        <div class="p-10">
+                            <div class="not-last-child:mb-8">
+                                <div class="-mt-[85px]">
+                                    <img class="w-44 h-44 rounded-full mx-auto shadow-avatar" src="${profilePicture}" title="Image" alt="Image" draggable="false" />
+                                </div>
+                            </div>
+                            <div class="not-last-child:mb-8">
+                                <div class="flex justify-center items-center space-x-2">
+                                    <h2 class="text-[20px] text-white font-semibold" style="color: #fff; display: inline-block;">${name}</h2>
+                                </div>
+                                <p class="text-sm">
+                                    website/<em>${name}</em>
+                                </p>
+                            </div>
+                            <div class="not-last-child:mb-8">
+                                <div class="mx-auto max-w-[750px]">
+                                    <p>
+                                        <pre>${textContent}</pre>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center space-x-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+`;
+
+                const blob = new Blob([generatedHtml], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'profile.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                const uploadLink = document.getElementById('upload-link');
+                uploadLink.innerHTML = `
+                    <h3>Uploaded Successfully!</h3>
+                    <p>Your unique text link: <a href="${url}" target="_blank">${url}</a></p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
