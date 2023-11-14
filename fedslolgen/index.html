@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feds Lol Gen Aziaclient</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: fit-content;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out forwards;
+            transition: width 1s ease-in-out;
+            text-align: center;
+        }
+
+        .stretch {
+            animation: stretch 0.5s ease-in-out;
+        }
+
+        @keyframes stretch {
+            from {
+                width: fit-content;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1, h2, h3 {
+            color: #61dafb;
+        }
+
+        input[type="file"], button {
+            display: none;
+        }
+
+        label, button {
+            background-color: #3f7fbf;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+            border: none;
+            outline: none;
+            text-decoration: none;
+        }
+
+        #upload-link {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            animation: fadeInUp 1s ease-in-out forwards;
+            color: #fff;
+            opacity: 1;
+        }
+
+        .fade {
+            animation: fade 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feds Lol HTML Gen</h1>
+        
+        <h2>About Us:</h2>
+        <p id="coolFact" class="hero-text-description">Loading...</p>
+
+        <a href="https://femboys.aziaclient.xyz/fedslolgen/make.html" target="_blank" class="stretch">
+            <button>Get Started.</button>
+        </a>
+
+        <div id="upload-link"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.container').style.opacity = 1;
+
+            // Initial data fetch
+            fetchFact();
+
+            // Set up automatic data refresh every 3 seconds
+            setInterval(fetchFact, 3000);
+        });
+
+        let previousFact = '';
+        const el = document.querySelector('.hero-text-description');
+
+        function fetchFact() {
+            // Simulate asynchronous data retrieval (you would replace this with actual data fetching)
+            const coolFacts = [
+                "Our site has been running since 2023",
+                "Over 100+ bios created.",
+                "The aziaclient.xyz team loves feedback. Let us know what you think.",
+                "We are constantly working on improving our services to make your experience better."
+            ];
+
+            // Get a random fact that is different from the previous one
+            let randomFact = '';
+            do {
+                randomFact = coolFacts[Math.floor(Math.random() * coolFacts.length)];
+            } while (randomFact === previousFact);
+
+            // Set the new fact
+            el.innerHTML = ''; // Clear existing content
+            scrambleText(randomFact, el);
+            previousFact = randomFact;
+        }
+
+        function scrambleText(text, element) {
+            const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!<>-_\\/[]{}—=+*^?#________';
+            let queue = [];
+            let frame = 0;
+            let frameRequest;
+
+            const update = () => {
+                let output = '';
+                let complete = 0;
+
+                for (let i = 0, n = queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = queue[i];
+
+                    if (frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = chars[Math.floor(Math.random() * chars.length)];
+                            queue[i].char = char;
+                        }
+                        output += `<span class="dud">${char}</span>`;
+                    } else {
+                        output += from;
+                    }
+                }
+
+                element.innerHTML = output;
+
+                if (complete === queue.length) {
+                    resolve();
+                } else {
+                    frameRequest = requestAnimationFrame(update);
+                    frame++;
+                }
+            };
+
+            const setText = (newText) => {
+                const oldText = element.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise(resolve => {
+                    this.resolve = resolve;
+                });
+                queue = [];
+
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    queue.push({ from, to, start, end });
+                }
+
+                cancelAnimationFrame(frameRequest);
+                frame = 0;
+                update();
+                return promise;
+            };
+
+            setText(text);
+        }
+    </script>
+</body>
+</html>
