@@ -1,0 +1,99 @@
+
+
+
+
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <title>femboys.aziaclient.xyz</title>
+                    <meta charset="UTF-8">
+                    <meta content="femboys.aziaclient.xyz" property="og:title" />
+                    <meta content="Image Service On femboys.aziaclient.xyz" property="og:description" />
+                    <meta name="theme-color" content="#7289DA">
+                    <meta name="twitter:card" content="summary_large_image">
+                    <meta property="og:image" content="https://femboys.aziaclient.xyz/uploads/LILBRO/image.png">
+                
+                    <style>
+                        body {
+                            background-color: #0f0f0f; 
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            margin: 0;
+                            font-family:"Segoe UI", "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+                        }
+                        #container {
+                            max-height: 80vh;
+                            overflow: auto;
+                        }
+                        #text {
+                            font-size: 18px; 
+                            margin-top: 15px;
+                            color: rgb(255, 255, 255);
+                        }
+                        #image-container {
+                            position: fixed;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            padding: 31px; 
+                            width: 35%; 
+                            background-color: rgba(0, 0, 0, 0.1);
+                            backdrop-filter: blur(15px);
+                            border-radius: 10px;
+                            color: rgba(255, 255, 255, 0.774);
+                            text-align: center;
+                        }
+                        .spoiler img {
+                            filter: blur(15px);
+                        }
+                        img {
+                            max-width: 100%;
+                            height: auto;
+                            display: block;
+                            margin: 0 auto;
+                        }
+                        #image-container p {
+                            text-align: center;
+                            margin-top: 10px;
+                            color: #555;
+                        }
+                        #raw-btn {
+                            display: block;
+                            margin-top: 15px;
+                            padding: 10px;
+                            background-color: #7289DA;
+                            color: #fff;
+                            text-decoration: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                    </style>
+                    <script>
+                        window.onload = function() {
+                            var spoilerParam = new URLSearchParams(window.location.search).get("spoiler");
+                            var imageContainer = document.getElementById("image-container");
+
+                            if (spoilerParam !== null) {
+                                imageContainer.classList.add("spoiler");
+                            }
+
+                            imageContainer.addEventListener("click", function() {
+                                imageContainer.classList.toggle("spoiler");
+                            });
+                        }
+                    </script>
+                </head>
+                <body>
+                    <div id="container">
+                        <div id="image-container" class="">
+                            <img src="https://femboys.aziaclient.xyz/uploads/LILBRO/image.png" style="max-width: 500px; max-height: 500px;">
+                            <div id="text"><p>Image Service On femboys.aziaclient.xyz</p></div>
+                            <a id="raw-btn" href="https://femboys.aziaclient.xyz/uploads/LILBRO/image.png" target="_blank" rel="noopener noreferrer">Raw Image</a>
+                        </div>
+                    </div>
+                <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"82ffc64d0c0e2439","r":1,"version":"2023.10.0","token":"e80c5b0ab4b049a68adc388cc691c9c8"}' crossorigin="anonymous"></script>
+</body>
+                </html>
+                
