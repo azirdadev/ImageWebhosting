@@ -68,29 +68,8 @@
                             cursor: pointer;
                         }
                     </style>
-                    <script>
-                        window.onload = function() {
-                            var spoilerParam = new URLSearchParams(window.location.search).get("spoiler");
-                            var imageContainer = document.getElementById("image-container");
-
-                            if (spoilerParam !== null) {
-                                imageContainer.classList.add("spoiler");
-                            }
-
-                            imageContainer.addEventListener("click", function() {
-                                imageContainer.classList.toggle("spoiler");
-                            });
-                        }
-                    </script>
                 </head>
                 <body>
-                    <div id="container">
-                        <div id="image-container" class="">
-                            <img src="https://femboys.aziaclient.xyz/uploads/H38HSA83/image_2023-12-03_190446709.png" style="max-width: 500px; max-height: 500px;">
-                            <div id="text"><p>Image Service On femboys.aziaclient.xyz</p></div>
-                            <a id="raw-btn" href="https://femboys.aziaclient.xyz/uploads/H38HSA83/image_2023-12-03_190446709.png" target="_blank" rel="noopener noreferrer">Raw Image</a>
-                        </div>
-                    </div>
                 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"82ffc64d0c0e2439","r":1,"version":"2023.10.0","token":"e80c5b0ab4b049a68adc388cc691c9c8"}' crossorigin="anonymous"></script>
 </body>
                 </html>
